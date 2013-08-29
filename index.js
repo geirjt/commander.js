@@ -10,6 +10,7 @@ var exists = fs.existsSync;
 var path = require('path');
 var dirname = path.dirname;
 var basename = path.basename;
+var colors = require('colors');
 
 /**
  * Expose the root command.
@@ -648,7 +649,7 @@ Command.prototype.version = function(str, flags){
   flags = flags || '-V, --version';
   this.option(flags, 'output the version number');
   this.on('version', function(){
-    console.log(str);
+    console.log(str.green.inverse);
     process.exit(0);
   });
   return this;
